@@ -3,21 +3,18 @@ export default {
   title: 'Portfolio',
   type: 'document',
   fields: [
-    // Name
     {
       name: 'name',
       title: 'Name',
       type: 'string',
       validation: (rule) => rule.required(),
     },
-    // Short Description (use at https://www.alvis.co.th/portfolio)
     {
       name: 'short_description',
       title: 'Short Description',
       type: 'text',
       validation: (rule) => rule.required().max(180),
     },
-    // Main Image
     {
       name: 'main_image',
       title: 'Main Image',
@@ -28,14 +25,12 @@ export default {
       },
       validation: (rule) => rule.required(),
     },
-    // Location
     {
       name: 'location',
       title: 'Location',
       type: 'string',
       validation: (rule) => rule.required(),
     },
-    // Year
     {
       name: 'year',
       title: 'Year',
@@ -45,15 +40,12 @@ export default {
       },
       validation: (rule) => rule.required(),
     },
-    // Size
     {
       name: 'size',
       title: 'Size (sq.m.)',
       type: 'number',
       validation: (rule) => rule.required().positive(),
     },
-
-    // Image and Description Sets
     {
       name: 'img_description_sets',
       title: 'Image and Description Sets',

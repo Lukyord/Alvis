@@ -1,3 +1,3 @@
-import portfolio from '../schemaTypes/portforlio.js'
+import portfolio from '../schemaTypes/portfolio.js'
 
 export const schemaTypes = [portfolio]
