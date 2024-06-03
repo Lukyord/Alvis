@@ -4,8 +4,8 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'name',
-      title: 'Name',
+      name: 'title',
+      title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
     },
@@ -14,7 +14,7 @@ export default {
       type: 'slug',
       title: 'Slug of your portfolio',
       options: {
-        source: 'name',
+        source: 'title',
       },
       validation: (rule) => rule.required(),
     },
