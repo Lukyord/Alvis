@@ -1,7 +1,5 @@
 import React from "react"
 
-export default function Blog({ params }: { params: { slug: string } }) {
-  console.log(params.slug)
-
+export default function Blog() {
   return <div></div>
 }
