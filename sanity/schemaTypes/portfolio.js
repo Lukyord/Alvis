@@ -16,6 +16,14 @@ export default {
       validation: (rule) => rule.required().max(180),
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug of your blog article',
+      options: {
+        source: 'title',
+      },
+    },
+    {
       name: 'main_image',
       title: 'Main Image',
       type: 'image',
@@ -47,7 +55,7 @@ export default {
       validation: (rule) => rule.required().positive(),
     },
     {
-      name: 'img_description_sets',
+      name: 'image_description_sets',
       title: 'Image and Description Sets',
       type: 'array',
       of: [
