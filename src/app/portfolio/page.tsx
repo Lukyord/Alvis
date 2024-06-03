@@ -49,7 +49,7 @@ export default async function Portfolio() {
                       alt={work.name}
                       width={500}
                       height={500}
-                      className="h-[200px] rounded-t-lg object-cover"
+                      className="h-[200px] rounded-lg object-cover"
                     />
                   )}
                 </CardContent>
