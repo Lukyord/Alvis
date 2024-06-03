@@ -12,10 +12,11 @@ export default {
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug of your blog article',
+      title: 'Slug of your portfolio',
       options: {
-        source: 'title',
+        source: 'name',
       },
+      validation: (rule) => rule.required(),
     },
     {
       name: 'short_description',
