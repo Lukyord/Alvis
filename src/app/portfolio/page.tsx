@@ -16,7 +16,7 @@ import Link from "next/link"
 async function getData() {
   const query = groq`
   *[_type == 'portfolio'] | order(_createdAt desc) {
-    name,
+    title,
     "currentSlug": slug.current,
     short_description,
     main_image,
@@ -39,14 +39,14 @@ export default async function Portfolio() {
             <Link href={`/portfolio/${work.currentSlug}`}>
               <Card className="w-[350px]">
                 <CardHeader>
-                  <CardTitle>{work.name}</CardTitle>
+                  <CardTitle>{work.title}</CardTitle>
                   <CardDescription>{work.short_description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {work.main_image && (
                     <Image
                       src={urlFor(work.main_image).url()}
-                      alt={work.name}
+                      alt={work.title}
                       width={500}
                       height={500}
                       className="h-[200px] rounded-lg object-cover"

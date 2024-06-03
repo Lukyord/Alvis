@@ -7,7 +7,7 @@ import { Portfolio } from "@/sanity/sanity.types"
 async function getData(slug: string) {
   const query = groq`
   *[_type == 'portfolio' && slug.current == '${slug}'][0] {
-    name,
+    title,
     short_description,
     main_image,
     location,
@@ -30,12 +30,12 @@ export default async function Work({ params }: { params: { slug: string } }) {
 
   return (
     <div>
-      <h1 className="mt-10 text-red-400">{data.name}</h1>
+      <h1 className="mt-10 text-red-400">{data.title}</h1>
       <p>{data.short_description}</p>
       {data.main_image && (
         <Image
           src={urlFor(data.main_image).url()}
-          alt={data.name || ""}
+          alt={data.title || ""}
           width={500}
           height={500}
           className="h-[200px] rounded-t-lg object-cover"

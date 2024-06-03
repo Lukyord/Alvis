@@ -4,18 +4,19 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'name',
-      title: 'Name',
+      name: 'title',
+      title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
     },
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug of your blog article',
+      title: 'Slug of your portfolio',
       options: {
         source: 'title',
       },
+      validation: (rule) => rule.required(),
     },
     {
       name: 'short_description',
