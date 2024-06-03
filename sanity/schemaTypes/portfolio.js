@@ -10,18 +10,18 @@ export default {
       validation: (rule) => rule.required(),
     },
     {
-      name: 'short_description',
-      title: 'Short Description',
-      type: 'text',
-      validation: (rule) => rule.required().max(180),
-    },
-    {
       name: 'slug',
       type: 'slug',
       title: 'Slug of your blog article',
       options: {
         source: 'title',
       },
+    },
+    {
+      name: 'short_description',
+      title: 'Short Description',
+      type: 'text',
+      validation: (rule) => rule.required().max(180),
     },
     {
       name: 'main_image',
