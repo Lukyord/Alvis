@@ -1,4 +1,4 @@
-import { Portfolio } from "../../sanity/sanity.types"
+import { Portfolio } from "@/sanity/sanity.types"
 
 export type PortfolioCard = {
   name: string

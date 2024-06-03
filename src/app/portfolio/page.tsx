@@ -1,3 +1,4 @@
+import groq from "groq"
 import Image from "next/image"
 
 import { client, urlFor } from "@/lib/sanity"
@@ -13,7 +14,7 @@ import {
 import Link from "next/link"
 
 async function getData() {
-  const query = `
+  const query = groq`
   *[_type == 'portfolio'] | order(_createdAt desc) {
     name,
     "currentSlug": slug.current,
