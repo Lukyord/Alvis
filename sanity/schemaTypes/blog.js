@@ -3,7 +3,9 @@ function toThaiSlug(inputString) {
     .replace(/\s+/g, '-')
     .replace(/%/g, 'เปอร์เซนต์')
     .replace(/[\u0300-\u036f]/g, '')
-    .replace(/--+/, '-')
+    .replace(/[\/\\]/g, '')
+    .replace(/[.,;:!?"'@#$%^&*()\[\]{}<>|~\/\\+=]/g, '')
+    .replace(/--+/g, '-')
     .replace(/^-+|-+$/g, '')
 
   return slug
@@ -31,6 +33,12 @@ export default {
       validation: (rule) => rule.required(),
     },
     {
+      name: 'short_description',
+      title: 'Short Description',
+      type: 'text',
+      validation: (rule) => rule.required().max(180),
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'string',
@@ -53,8 +61,8 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'blog_description',
-      title: 'Blog Description',
+      name: 'content',
+      title: 'Content',
       type: 'array',
       of: [
         {
