@@ -68,6 +68,49 @@ export type Geopoint = {
   alt?: number
 }
 
+export type Catalogue = {
+  _id: string
+  _type: 'catalogue'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  title?: string
+  main_image?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  recommend_land_direction?: string
+  area?: number
+  land_area_require?: string
+  bedroom?: number
+  bathroom?: number
+  nulti_purpose_area?: number
+  price?: number
+  model_sets?: Array<{
+    title?: string
+    image_sets?: Array<{
+      asset?: {
+        _ref: string
+        _type: 'reference'
+        _weak?: boolean
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+      }
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      _type: 'image'
+      _key: string
+    }>
+    _key: string
+  }>
+}
+
 export type Blog = {
   _id: string
   _type: 'blog'
@@ -76,6 +119,7 @@ export type Blog = {
   _rev: string
   title?: string
   slug?: Slug
+  short_description?: string
   author?: string
   release_date?: string
   main_image?: {
@@ -89,7 +133,7 @@ export type Blog = {
     crop?: SanityImageCrop
     _type: 'image'
   }
-  blog_description?: Array<
+  content?: Array<
     | {
         children?: Array<{
           marks?: Array<string>
