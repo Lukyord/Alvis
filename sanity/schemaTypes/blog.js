@@ -58,6 +58,11 @@ export default {
       name: 'main_image',
       title: 'Main Image',
       type: 'image',
+      options: {
+        hotspot: true,
+        accept: 'image/*',
+        storeOriginalFilename: true,
+      },
       validation: (Rule) => Rule.required(),
     },
     {
@@ -72,6 +77,8 @@ export default {
           type: 'image',
           options: {
             hotspot: true,
+            accept: 'image/*',
+            storeOriginalFilename: true,
           },
           fields: [
             {

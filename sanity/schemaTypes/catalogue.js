@@ -14,6 +14,7 @@ export default {
       title: 'Main Image',
       type: 'image',
       options: {
+        hotspot: true,
         accept: 'image/*',
         storeOriginalFilename: true,
       },
@@ -84,7 +85,7 @@ export default {
               type: 'string',
               validation: (rule) => rule.required(),
             },
-           
+
             {
               name: 'image_sets',
               title: 'Image Sets',
@@ -92,6 +93,7 @@ export default {
               of: [{type: 'image'}],
               options: {
                 layout: 'grid',
+                hotspot: true,
                 accept: 'image/*',
                 storeOriginalFilename: true,
               },

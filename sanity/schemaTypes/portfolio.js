@@ -29,7 +29,8 @@ export default {
       title: 'Main Image',
       type: 'image',
       options: {
-        accept: '.jpg,.jpeg,.png',
+        hotspot: true,
+        accept: 'image/*',
         storeOriginalFilename: true,
       },
       validation: (rule) => rule.required(),
@@ -81,6 +82,9 @@ export default {
               of: [{type: 'image'}],
               options: {
                 layout: 'grid',
+                hotspot: true,
+                accept: 'image/*',
+                storeOriginalFilename: true,
               },
               validation: (rule) => rule.required(),
             },
@@ -109,6 +113,9 @@ export default {
               of: [{type: 'image'}],
               options: {
                 layout: 'grid',
+                hotspot: true,
+                accept: 'image/*',
+                storeOriginalFilename: true,
               },
               validation: (rule) => rule.required(),
             },
