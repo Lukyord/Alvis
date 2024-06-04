@@ -27,6 +27,7 @@ export default async function Work({ params }: { params: { slug: string } }) {
 
   const imageDescriptionSets = data.image_description_sets
   const planTitleImageSets = data.plan_title_image_sets
+  const year = new Date(data.year as string).getFullYear().toString()
 
   return (
     <div>
@@ -44,7 +45,7 @@ export default async function Work({ params }: { params: { slug: string } }) {
       <ul className="list-disc pl-10">
         <li>{data.location}</li>
         <li>{data.size}</li>
-        <li>{data.year}</li>
+        <li>{year}</li>
       </ul>
 
       <ul className="my-10">
