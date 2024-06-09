@@ -42,6 +42,8 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'string',
+      type: 'reference',
+      to: [{ type: 'author' }],
       validation: (Rule) => Rule.required(),
     },
     {
