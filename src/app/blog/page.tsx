@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link"
 import { BlogCard } from "@/types/Blog"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
 async function getData() {
   const query = groq`
@@ -68,9 +67,11 @@ const components = {
 export default async function Blogs() {
   const data: BlogCard[] = await getData()
 
+  console.log(data)
+
   return (
     <div>
-      <h1>Portfolio</h1>
+      <h1>Blog</h1>
       <ul>
         {data.map((blog, index) => (
           <li key={index} className="w-fit">
@@ -90,11 +91,8 @@ export default async function Blogs() {
                       className="h-[200px] rounded-lg object-cover"
                     />
                   )}
-                  {blog.blog_description ? (
-                    <PortableText
-                      value={blog.blog_description}
-                      components={components}
-                    />
+                  {blog.short_description ? (
+                    <p>{blog.short_description}</p>
                   ) : (
                     <p>No description available</p>
                   )}
