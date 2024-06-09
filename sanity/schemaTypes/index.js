@@ -1,5 +1,6 @@
-import portfolio from '../schemaTypes/portfolio.js'
-import blog from '../schemaTypes/blog.js'
+import portfolio from './portfolio.js'
+import blog from './blog.js'
 import catalogue from './catalogue.js'
+import author from './author.js'
 
-export const schemaTypes = [portfolio,blog,catalogue]
+export const schemaTypes = [portfolio, blog, catalogue, author]
