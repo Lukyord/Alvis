@@ -48,22 +48,29 @@ export default {
         }),
     },
     {
-      name: 'bedroom',
-      title: 'Bedroom ',
-      type: 'number',
-      validation: (rule) => rule.required().positive().integer(),
-    },
-    {
-      name: 'bathroom',
-      title: 'Bathroom ',
-      type: 'number',
-      validation: (rule) => rule.required().positive().integer(),
-    },
-    {
-      name: 'nulti_purpose_area',
-      title: 'Multi-Purpose Area ',
-      type: 'number',
-      validation: (rule) => rule.required().positive().integer(),
+      name: 'rooms',
+      title: 'Rooms',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'room_title',
+              title: 'Room Title',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'quantity',
+              title: 'Quantity',
+              type: 'number',
+              validation: (rule) => rule.required().positive().integer(),
+            },
+          ],
+        },
+      ],
+      validation: (rule) => rule.required(),
     },
     {
       name: 'price',
