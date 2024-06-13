@@ -89,9 +89,11 @@ export type Catalogue = {
   recommend_land_direction?: string
   area?: number
   land_area_require?: string
-  bedroom?: number
-  bathroom?: number
-  nulti_purpose_area?: number
+  rooms?: Array<{
+    room_title?: string
+    quantity?: number
+    _key: string
+  }>
   price?: number
   model_sets?: Array<{
     title?: string
@@ -120,7 +122,12 @@ export type Blog = {
   title?: string
   slug?: Slug
   short_description?: string
-  author?: string
+  author?: {
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    [internalGroqTypeReferenceTo]?: 'author'
+  }
   release_date?: string
   main_image?: {
     asset?: {
@@ -166,6 +173,26 @@ export type Blog = {
         _key: string
       }
   >
+}
+
+export type Author = {
+  _id: string
+  _type: 'author'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  profile?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
+    }
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
 }
 
 export type Portfolio = {
