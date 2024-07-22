@@ -13,6 +13,7 @@ export const deskStructure = (S) =>
               S.documentTypeListItem('blog').title('Blog').icon(MdDescription),
               S.documentTypeListItem('portfolio').title('Portfolio').icon(MdDescription),
               S.documentTypeListItem('catalogue').title('Catalogue').icon(MdDescription),
+              S.documentTypeListItem('news').title('News').icon(MdDescription),
             ]),
         ),
       S.listItem()
