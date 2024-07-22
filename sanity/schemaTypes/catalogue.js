@@ -10,8 +10,8 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'main_image',
-      title: 'Main Image',
+      name: 'heroImage',
+      title: 'Hero Image',
       type: 'image',
       options: {
         hotspot: true,
@@ -21,7 +21,29 @@ export default {
       validation: (rule) => rule.required(),
     },
     {
-      name: 'recommend_land_direction',
+      name: 'fixedImage1',
+      title: 'Fixed Image 1',
+      type: 'image',
+      options: {
+        hotspot: true,
+        accept: 'image/*',
+        storeOriginalFilename: true,
+      },
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: 'fixedImage2',
+      title: 'Fixed Image 2',
+      type: 'image',
+      options: {
+        hotspot: true,
+        accept: 'image/*',
+        storeOriginalFilename: true,
+      },
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: 'landDirection',
       title: 'Recommend Land Direction',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -33,30 +55,33 @@ export default {
       validation: (rule) => rule.required().positive(),
     },
     {
-      name: 'land_area_require',
-      title: 'Land Area Requirement',
-      type: 'string',
-      description:
-        'Please provide the area in the format "length(m) x width(m)" e.g., 16.5m x 18.5m',
-      validation: (rule) =>
-        rule.required().custom((value) => {
-          const regex = /^\d+(\.\d+)?m\s*x\s*\d+(\.\d+)?m$/
-          if (!regex.test(value)) {
-            return 'Area does not match the required format'
-          }
-          return true
-        }),
+      name: 'bedRoom',
+      title: 'Bedroom',
+      type: 'number',
+      validation: (rule) => rule.required().positive(),
     },
     {
-      name: 'rooms',
-      title: 'Rooms',
+      name: 'bathRoom',
+      title: 'Bathroom',
+      type: 'number',
+      validation: (rule) => rule.required().positive(),
+    },
+    {
+      name: 'multiPurposeArea',
+      title: 'Multi-Purpose Area',
+      type: 'number',
+      validation: (rule) => rule.required().positive(),
+    },
+    {
+      name: 'otherRooms',
+      title: 'Other Rooms',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
             {
-              name: 'room_title',
+              name: 'roomTitle',
               title: 'Room Title',
               type: 'string',
               validation: (rule) => rule.required(),
@@ -79,27 +104,44 @@ export default {
       validation: (rule) => rule.required().positive(),
     },
     {
-      name: 'model_sets',
-      title: 'Model sets',
+      name: 'imageSet',
+      title: 'Image Set',
+      type: 'array',
+      of: [{ type: 'image' }],
+      options: {
+        layout: 'grid',
+        hotspot: true,
+        accept: 'image/*',
+        storeOriginalFilename: true,
+      },
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: 'floorPlan',
+      title: 'Floor Plan',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
             {
-              name: 'title',
+              name: 'floorLevel',
+              title: 'Floor Level',
+              type: 'number',
+              validation: (rule) => rule.required().positive(),
+            },
+            {
+              name: 'floorPlanTitle',
               title: 'Title',
               type: 'string',
-              validation: (rule) => rule.required(),
+              hidden: true,
+              readOnly: true,
             },
-
             {
-              name: 'image_sets',
-              title: 'Image Sets',
-              type: 'array',
-              of: [{type: 'image'}],
+              name: 'floorPlanImage',
+              title: 'Floor Plan Image',
+              type: 'image',
               options: {
-                layout: 'grid',
                 hotspot: true,
                 accept: 'image/*',
                 storeOriginalFilename: true,
@@ -107,8 +149,34 @@ export default {
               validation: (rule) => rule.required(),
             },
           ],
+          preview: {
+            select: {
+              title: 'floorLevel',
+              media: 'floorPlanImage',
+            },
+            prepare(selection) {
+              const { title, media } = selection;
+              return {
+                title: `Level ${title}`,
+                media: media,
+              };
+            },
+          },
         },
       ],
+      validation: (Rule) =>
+        Rule.custom((floorPlans) => {
+          if (!floorPlans) return true;
+
+          const levels = floorPlans.map((plan) => plan.floorLevel);
+          const uniqueLevels = new Set(levels);
+
+          if (uniqueLevels.size !== levels.length) {
+            return 'Each floor level must be unique.';
+          }
+
+          return true;
+        }),
     },
   ],
-}
+};
