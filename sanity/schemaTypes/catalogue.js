@@ -62,25 +62,25 @@ export default {
       name: 'area',
       title: 'Area (sq.m.)',
       type: 'number',
-      validation: (rule) => rule.required().positive(),
+      validation: (rule) => rule.required().positive().integer(),
     },
     {
       name: 'bedRoom',
       title: 'Bedroom',
       type: 'number',
-      validation: (rule) => rule.required().positive(),
+      validation: (rule) => rule.required().positive().integer(),
     },
     {
       name: 'bathRoom',
       title: 'Bathroom',
       type: 'number',
-      validation: (rule) => rule.required().positive(),
+      validation: (rule) => rule.required().positive().integer(),
     },
     {
       name: 'multiPurposeArea',
       title: 'Multi-Purpose Area',
       type: 'number',
-      validation: (rule) => rule.required().positive(),
+      validation: (rule) => rule.required().positive().integer(),
     },
     {
       name: 'otherRooms',
@@ -105,7 +105,6 @@ export default {
           ],
         },
       ],
-      validation: (rule) => rule.required(),
     },
     {
       name: 'price',
@@ -138,7 +137,7 @@ export default {
               name: 'floorLevel',
               title: 'Floor Level',
               type: 'number',
-              validation: (rule) => rule.required().positive(),
+              validation: (rule) => rule.required().positive().integer(),
             },
             {
               name: 'floorPlanTitle',
